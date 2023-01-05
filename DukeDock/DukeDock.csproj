@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+
+
+        <RuntimeIdentifiers>osx-x64</RuntimeIdentifiers>
+        <CFBundleName>DukeDock</CFBundleName> <!-- Also defines .app file name -->
+        <CFBundleDisplayName>DukeDock</CFBundleDisplayName>
+        <CFBundleIdentifier>dev.dukedarius.dukedock</CFBundleIdentifier>
+        <CFBundleVersion>1.0.0</CFBundleVersion>
+        <CFBundleShortVersionString>1.0.0</CFBundleShortVersionString>
+        
+        <CFBundlePackageType>APPL</CFBundlePackageType>
+        <CFBundleExecutable>DukeDock</CFBundleExecutable>
+        <CFBundleIconFile>zotero.icns</CFBundleIconFile> <!-- Will be copied from output directory -->
+        <NSPrincipalClass>NSApplication</NSPrincipalClass>
+        <NSHighResolutionCapable>true</NSHighResolutionCapable>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Remove=".gitignore" />
+        <None Update="zotero.icns">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <TrimmerRootDescriptor Include="Roots.xml" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="0.10.18" />
+        <PackageReference Include="Avalonia.Desktop" Version="0.10.18" />
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.18" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.18" />
+        <PackageReference Include="Material.Avalonia" Version="2.5.1" />
+        <PackageReference Include="Material.Icons" Version="1.1.32" />
+        <PackageReference Include="SharpHook" Version="4.0.0" />
+        <PackageReference Include="SharpHook.Reactive" Version="4.0.0" />
+        <PackageReference Include="XamlNameReferenceGenerator" Version="1.5.1" />
+        <PackageReference Include="Dotnet.Bundle" Version="*" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AvaloniaResource Include="Assets\**">
+      </AvaloniaResource>
+    </ItemGroup>
+    
+</Project>

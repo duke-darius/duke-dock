@@ -1,0 +1,23 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="DukeDock.Windows.StringStoreAddRecordWindow"
+        Title="StringStoreAddRecordWindow">
+    
+    <StackPanel Margin="10">
+        <Label Content="Name"></Label>
+        <TextBox Text="{Binding Model.Name}"></TextBox>
+        <Label Content="Value"></Label>
+        <TextBox Text="{Binding Model.Value}"></TextBox>
+        
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Cancel" HotKey="Escape" Command="{Binding CancelCommand}"></Button>
+            <Button Content="Save" HotKey="Enter" Command="{Binding SaveCommand}"></Button>
+        </StackPanel>
+        
+    </StackPanel>
+    
+    
+</Window>
