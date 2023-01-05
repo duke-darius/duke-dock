@@ -4,6 +4,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="DukeDock.Windows.StringStoreAddRecordWindow"
+        Width="300"
+        Height="600"
         Title="StringStoreAddRecordWindow">
     
     <StackPanel Margin="10">
@@ -13,7 +15,7 @@
         <TextBox Text="{Binding Model.Value}"></TextBox>
         
         <StackPanel Orientation="Horizontal">
-            <Button Content="Cancel" HotKey="Escape" Command="{Binding CancelCommand}"></Button>
+            <Button Content="Cancel" HotKey="Escape" Command="{Binding CancelCommand}" Margin="0,0,10,0"></Button>
             <Button Content="Save" HotKey="Enter" Command="{Binding SaveCommand}"></Button>
         </StackPanel>
         

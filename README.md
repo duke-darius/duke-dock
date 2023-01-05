@@ -22,8 +22,13 @@ You can then click the button to access which ever feature you would like OR pre
 ## Planned Features
 - New Guid Generator (Bindable to a Keyboard shortcut that populates your clipboard)
 - RSA Key Generator 
+- Bind any feature to any key combination
+- Random password generator (which can automatically store in the StringStore)
+- Bind CMD/Bash statement/s to a key-bind
 
 ## Contributions
 Contributions are MORE than welcome, be it in the form of PRs with bug fixes/new features/translations.
 I only ask that ease of use is maintained/considered. 
+
+If you would like to make a suggestion for features to add, simply PR 
 

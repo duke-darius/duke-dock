@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using System;
+using Avalonia.Controls;
 using Avalonia.ReactiveUI;
 using Avalonia.Threading;
 using ReactiveUI;
@@ -17,7 +18,7 @@ class Program
         RxApp.MainThreadScheduler = AvaloniaScheduler.Instance;
         BuildAvaloniaApp()
             .UseReactiveUI()
-            .StartWithClassicDesktopLifetime(args);
+            .StartWithClassicDesktopLifetime(args, ShutdownMode.OnExplicitShutdown);
     }
 
     // Avalonia configuration, don't remove; also used by visual designer.

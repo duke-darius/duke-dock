@@ -15,7 +15,6 @@ public partial class StringStoreAddRecordWindow : Window
     
     public StringStoreAddRecordWindow()
     {
-        
         DataContext = this;
         CancelCommand = ReactiveCommand.Create(() =>
         {
@@ -32,9 +31,7 @@ public partial class StringStoreAddRecordWindow : Window
     {
         AvaloniaXamlLoader.Load(this);
     }
-
     
-
     public class StringStoreAddRecordViewModel : ReactiveObject
     {
         private string? _name;

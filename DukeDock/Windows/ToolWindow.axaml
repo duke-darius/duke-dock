@@ -1,0 +1,20 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Width="300"
+        Height="600"
+        ShowInTaskbar="False"
+        Closing="Window_OnClosing"
+        Closed="TopLevel_OnClosed"
+        Deactivated="WindowBase_OnDeactivated"
+        WindowStartupLocation="Manual"
+         
+        x:Class="DukeDock.Windows.ToolWindow"
+        Title="DukeDock">
+    <StackPanel Margin="10">
+        <Button Name="OtpButton" Content="1: One-time password" Margin="10" HotKey="D1" Command="{Binding OtpClicked}"></Button>
+        <Button Name="StringStoreButton" Content="2: String-store" Margin="10" HotKey="D2" Command="{Binding StringStoreClicked}"></Button>
+    </StackPanel>
+</Window>

@@ -5,14 +5,12 @@
     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
     Width="200"
     Height="400"
+    IsVisible="False"
+    ShowActivated="False"
+    
+    WindowState="Normal"
     ShowInTaskbar="False"
-    Closing="Window_OnClosing"
-    DataContext="this"
-    Deactivated="WindowBase_OnDeactivated"
     x:Class="DukeDock.MainWindow"
     Title="DukeDock">
-    <StackPanel Margin="10">
-        <Button Name="OtpButton" Content="Otp" Margin="10" HotKey="D1" Command="{Binding OtpClicked}"></Button>
-        <Button Name="StringStoreButton" Content="TextStore" Margin="10" HotKey="D2" Command="{Binding StringStoreClicked}"></Button>
-    </StackPanel>
+
 </Window>

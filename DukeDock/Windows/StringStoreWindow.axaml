@@ -6,8 +6,10 @@
     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
     x:Class="DukeDock.Windows.StringStoreWindow"
     Opened="TopLevel_OnOpened"
+    Deactivated="WindowBase_OnDeactivated"
     Width="300"
     Height="600"
+    WindowStartupLocation="CenterScreen"
     Title="StringStoreWindow">
     <Grid Margin="10" RowDefinitions="40,*,120">
         <Button Grid.Row="0" Name="AddRecordButton" Content="Add" HotKey="Shift+OemPlus" Command="{Binding AddRecordCommand}"></Button>

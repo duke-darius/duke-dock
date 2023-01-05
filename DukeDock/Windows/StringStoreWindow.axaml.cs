@@ -15,26 +15,39 @@ public partial class StringStoreWindow : Window
 {
     private StringStoreRecord? _selectedRecord = null;
     private ObservableCollection<StringStoreRecord> Records { get; set; } = new(App.State.StringStoreRecords);
+    private bool _closeOnDeactivate = true;
     public StringStoreWindow()
     {
 
         AddRecordCommand = ReactiveCommand.CreateFromTask(async () =>
         {
-            await Dispatcher.UIThread.InvokeAsync(async () =>
+            try
             {
-                var win = new StringStoreAddRecordWindow();
-                var res = await win.ShowDialog<StringStoreAddRecordWindow.StringStoreAddRecordViewModel?>(this);
-                if (res != null)
+                _closeOnDeactivate = false;
+                await Dispatcher.UIThread.InvokeAsync(async () =>
                 {
-                    App.State.StringStoreRecords.Add(new StringStoreRecord
+
+                    var win = new StringStoreAddRecordWindow();
+                    var res = await win.ShowDialog<StringStoreAddRecordWindow.StringStoreAddRecordViewModel?>(this);
+
+                    if (res != null)
                     {
-                        Name = res.Name,
-                        Value = res.Value
-                    });
-                    AppState.Save(App.State);
-                    Redraw();
-                }
-            });
+                        App.State.StringStoreRecords.Add(new StringStoreRecord
+                        {
+                            Name = res.Name,
+                            Value = res.Value
+                        });
+                        AppState.Save(App.State);
+                        Redraw();
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            _closeOnDeactivate = true;
         });
         CopyRecordCommand = ReactiveCommand.Create(() =>
         {
@@ -44,7 +57,7 @@ public partial class StringStoreWindow : Window
         CancelCommand = ReactiveCommand.Create(Close);
         
         InitializeComponent();
-        
+
         DataContext = this;
         TextListBox.Focus();
 
@@ -76,5 +89,11 @@ public partial class StringStoreWindow : Window
     private void TopLevel_OnOpened(object? sender, EventArgs e)
     {
         TextListBox.ItemContainerGenerator.ContainerFromIndex(TextListBox.SelectedIndex).Focus();
+    }
+
+    private void WindowBase_OnDeactivated(object? sender, EventArgs e)
+    {
+        if(_closeOnDeactivate)
+            Dispatcher.UIThread.Post(Close);
     }
 }

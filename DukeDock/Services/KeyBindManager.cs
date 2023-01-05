@@ -32,7 +32,7 @@ public class KeyBindManager
     {
         await _globalHook.RunAsync();
     }
-
+    
     private void CheckAndExecuteKeyBinds()
     {
         foreach (var hook in _hooks.Where(hook => hook.ShouldExecute(_codes)))
@@ -55,6 +55,5 @@ public class KeyBindManager
             return;
         _codes.Remove(e.RawEvent.Keyboard.KeyCode);
     }
-    
-    
+
 }
