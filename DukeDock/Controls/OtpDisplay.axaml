@@ -1,0 +1,19 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             
+             x:Class="DukeDock.Controls.OtpDisplay">
+    <StackPanel >
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Left" x:Name="NameTextBox" TextAlignment="Center" FontSize="22" Text="{Binding Name, Mode=OneWay}"></TextBlock>
+            <TextBlock DockPanel.Dock="Right" x:Name="TimeTextBox" TextAlignment="Center" FontSize="22" HorizontalAlignment="Right" Text="{Binding Time}"></TextBlock>
+        </DockPanel>
+        
+        <TextBlock x:Name="CodeTextBox" FontSize="56" Text="{Binding Code, Mode=OneWay}" TextAlignment="Center" FontWeight="Bold" FontFamily="Roboto"></TextBlock>
+        <ProgressBar x:Name="Remaining" Minimum="0" Maximum="30" ShowProgressText="True" >
+            <ProgressBar.Transitions></ProgressBar.Transitions>
+        </ProgressBar>
+    </StackPanel>
+</UserControl>

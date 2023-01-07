@@ -2,16 +2,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:DukeDock.Controls"
+        xmlns:totp="clr-namespace:DukeDock.Models.Totp"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="DukeDock.Windows.OtpWindows.OtpWindow"
         Deactivated="WindowBase_OnDeactivated"
+        Activated="WindowBase_OnActivated"
         Width="300"
         Height="600"
         Title="One-time passwords">
     <Grid RowDefinitions="50,*,60">
         <Button Grid.Row="0" Margin="10" Content="Back (Esc)" HotKey="Escape" Command="{Binding ExitCommand}"></Button>
         <ScrollViewer Grid.Row="1">
-            
+            <ListBox Name="OtpListBox" SelectionMode="AlwaysSelected" Items="{Binding Items}" KeyDown="OtpListBox_OnKeyDown">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="totp:TotpDefinition">
+                        <!-- <TextBlock Text="{Binding IdString}"></TextBlock> -->
+                        <controls:OtpDisplay Id="{Binding }"></controls:OtpDisplay>
+                        <!-- <StackPanel Width="340" Margin="5"> -->
+                        <!--     <TextBlock TextAlignment="Center" FontSize="22" Text="{Binding Name, Mode=OneWay}"></TextBlock> -->
+                        <!--     <TextBlock FontSize="56" Text="{Binding Code, Mode=OneWay}" TextAlignment="Center" FontWeight="Bold" FontFamily="Roboto"></TextBlock> -->
+                        <!--     <ProgressBar Minimum="0" Maximum="30"></ProgressBar> -->
+                        <!-- </StackPanel> -->
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </ScrollViewer>
         <Button Grid.Row="2" Margin="10" Content="Settings (S)" HotKey="Shift+S" Command="{Binding SettingsCommand}"></Button>
     </Grid>
