@@ -2,18 +2,36 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:otpWindows="clr-namespace:DukeDock.Windows.OtpWindows"
+        xmlns:totp="clr-namespace:DukeDock.Models.Totp"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         Width="600"
         Height="600"
         x:Class="DukeDock.Windows.OtpWindows.OtpSettingsWindow"
         Title="OtpSettingsWindow">
-    <Grid ColumnDefinitions="*,*" RowDefinitions="*,60">
-        <ScrollViewer Grid.Row="0" Grid.Column="0">
-            <ListBox>
-                
+    <Grid ColumnDefinitions="*,*" RowDefinitions="60,*,60">
+        <StackPanel Orientation="Horizontal">
+            <Button Margin="10" Content="Add (+)" HotKey="OemPlus" Command="{Binding AddCommand}"></Button>
+            <Button Margin="10" Content="Delete (-)" HotKey="OemMinus" Command="{Binding RemoveCommand}"></Button>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" Grid.Column="0">
+            <ListBox Name="OtpListBox" Items="{Binding Otps}" SelectionMode="AlwaysSelected" SelectionChanged="OtpListBox_OnSelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="totp:TotpDefinition">
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
         </ScrollViewer>
-        <Button Grid.Row="1" Grid.Column="0" Content="Exit" Margin="10" HotKey="Escape" Command="{Binding ExitCommand}"></Button>
-        <Button Grid.Row="1" Grid.Column="1" Content="Save" Margin="10" HotKey="Enter" Command="{Binding SaveCommand}"></Button>
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
+            <StackPanel Name="EditStackPanel">
+                <Label Content="Name" Margin="10"></Label>
+                <TextBox Margin="10" Name="NameTextBox" />
+                <Label Content="Key" Margin="10"></Label>
+                <TextBox Margin="10" Name="KeyTextBox" />
+            </StackPanel>
+        </ScrollViewer>
+        <Button Grid.Row="2" Grid.Column="0" Content="Exit (Esc)" Margin="10" HotKey="Escape" Command="{Binding CancelCommand}"></Button>
+        <Button Grid.Row="2" Grid.Column="1" Content="Save (Shift + Enter)" Margin="10" HotKey="Shift+Enter" Command="{Binding SaveCommand}"></Button>
     </Grid>
 </Window>

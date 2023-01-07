@@ -3,6 +3,7 @@ using System.Reactive;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using JetBrains.Annotations;
 using ReactiveUI;
 
@@ -26,9 +27,12 @@ public partial class OtpWindow : Window
     private async Task ShowSettingsWindow()
     {
         _closeOnDeactivate = false;
-        var win = new OtpSettingsWindow();
-        await win.ShowDialog(this);
+        await Dispatcher.UIThread.InvokeAsync(async () =>
+        {
+            var win = new OtpSettingsWindow();
+            await win.ShowDialog(this);
 
+        });
         _closeOnDeactivate = true;
     }
 

@@ -9,7 +9,7 @@
         Closing="Window_OnClosing"
         Closed="TopLevel_OnClosed"
         Deactivated="WindowBase_OnDeactivated"
-        WindowStartupLocation="Manual"
+        WindowStartupLocation="CenterScreen"
          
         x:Class="DukeDock.Windows.ToolWindow"
         Title="DukeDock">

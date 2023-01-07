@@ -13,6 +13,6 @@
         <ScrollViewer Grid.Row="1">
             
         </ScrollViewer>
-        <Button Grid.Row="2" Margin="10" Content="Settings (S)" HotKey="S" Command="{Binding SettingsCommand}"></Button>
+        <Button Grid.Row="2" Margin="10" Content="Settings (S)" HotKey="Shift+S" Command="{Binding SettingsCommand}"></Button>
     </Grid>
 </Window>

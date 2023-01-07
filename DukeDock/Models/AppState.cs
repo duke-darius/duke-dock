@@ -11,6 +11,7 @@ public class AppState
     public DateTime LastSaved { get; set; }
 
     public List<StringStoreRecord> StringStoreRecords { get; set; } = new();
+    public List<Totp.TotpDefinition> TotpDefinitions { get; set; } = new();
     
     public static void Save(AppState state)
     {
