@@ -10,7 +10,7 @@ The key focus of this app is user experience and efficiency.
 Currently devloping on MaxOS so most features will be OSX focussed, but more general purpose features will be added over time.
 
 ## Usage Information
-Upon installtion, a hidden window will be loaded which can be displayyed by pressing (Windows: WIN + SHIFT + O) (MAC: SHIFT + META + O).
+Upon installtion, a hidden window will be loaded which can be displayed by pressing (Windows: WIN + SHIFT + O) (MAC: SHIFT + META + O).
 You can then click the button to access which ever feature you would like OR press the relevent keyboard shortcut.
 
 ## Current Features
