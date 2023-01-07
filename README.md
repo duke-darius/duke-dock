@@ -14,7 +14,7 @@ Upon installtion, a hidden window will be loaded which can be displayyed by pres
 You can then click the button to access which ever feature you would like OR press the relevent keyboard shortcut.
 
 ## Current Features
-- OTP (Press 1) (Coming Soon)
+- OTP (Press 1)
 - StringStore (Press 2) (Mostly in place)
   - Store any string with a name and quickly and easily copy it to your clipboard 
   - Add new records, edit or delete existing records
@@ -30,5 +30,5 @@ You can then click the button to access which ever feature you would like OR pre
 Contributions are MORE than welcome, be it in the form of PRs with bug fixes/new features/translations.
 I only ask that ease of use is maintained/considered. 
 
-If you would like to make a suggestion for features to add, simply PR 
+If you would like to make a suggestion for features to add, simply PR this file :)
 
