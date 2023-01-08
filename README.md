@@ -44,4 +44,8 @@ If you would like to make a suggestion for features to add, simply PR this file 
 ### String Store
 ![image](https://user-images.githubusercontent.com/6437746/211209227-cfae7c1b-4fa6-4bcc-a4fb-68658a675def.png)
 
+### Guid Generator
+![image](https://user-images.githubusercontent.com/6437746/211209257-1edbd9d2-ceab-4008-acac-49909ad5515a.png)
+
+
 
