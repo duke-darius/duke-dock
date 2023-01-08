@@ -35,3 +35,13 @@ I only ask that ease of use is maintained/considered.
 
 If you would like to make a suggestion for features to add, simply PR this file :)
 
+
+## Images for reference 
+
+### Totp window
+![image](https://user-images.githubusercontent.com/6437746/211209193-75041ec3-1adc-496a-ab8d-ed6f2c9b016d.png)
+
+### String Store
+![image](https://user-images.githubusercontent.com/6437746/211209227-cfae7c1b-4fa6-4bcc-a4fb-68658a675def.png)
+
+
