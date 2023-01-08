@@ -14,13 +14,14 @@ Upon installtion, a hidden window will be loaded which can be displayed by press
 You can then click the button to access which ever feature you would like OR press the relevent keyboard shortcut.
 
 ## Current Features
-- OTP (Press 1)
-- StringStore (Press 2) (Mostly in place)
+- Timed One Time Password
+- StringStore
   - Store any string with a name and quickly and easily copy it to your clipboard 
   - Add new records, edit or delete existing records
+- New Guid Generator (Bindable to a Keyboard shortcut that populates your clipboard)
+
 
 ## Planned Features
-- New Guid Generator (Bindable to a Keyboard shortcut that populates your clipboard)
 - RSA Key Generator 
 - Bind any feature to any key combination
 - Random password generator (which can automatically store in the StringStore)
