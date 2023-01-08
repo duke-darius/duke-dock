@@ -1,0 +1,26 @@
+<lib:FeatureWindow xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lib="clr-namespace:DukeDock.Lib;assembly=DukeDock.Lib"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Width="300"
+        Height="600"
+        x:Class="DukeDock.Windows.GuidGeneratorWIndows.GuidGeneratorWindow"
+        Closed="TopLevel_OnClosed"
+        Opened="TopLevel_OnOpened"
+        Title="GuidGeneratorWindow">
+    <Grid RowDefinitions="*,40">
+        
+        <StackPanel>
+            <Button Margin="10" Content="Exit (Esc)" HotKey="Escape" Command="{Binding ExitCommand}"></Button>
+        
+            <ListBox Name="GuidListBox" Items="{Binding GuidFormats}" SelectionMode="AlwaysSelected" Margin="10" SelectionChanged="SelectingItemsControl_OnSelectionChanged"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Button Content="Copy and Close (Enter)" Margin="10" HotKey="Enter" Command="{Binding CopyCommand}" />
+
+        </StackPanel>
+    </Grid>
+
+</lib:FeatureWindow>

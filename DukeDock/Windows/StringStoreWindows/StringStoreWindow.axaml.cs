@@ -77,12 +77,6 @@ public partial class StringStoreWindow : FeatureWindow
     private ReactiveCommand<Unit, Unit> CopyRecordCommand { [UsedImplicitly] get; }
     private ReactiveCommand<Unit, Unit> CancelCommand { [UsedImplicitly] get; }
 
-    private void InitializeComponent()
-    {
-        AvaloniaXamlLoader.Load(this);
-        TextListBox = this.FindControl<ListBox>("TextListBox");
-    }
-
     private void TextListBox_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
         _selectedRecord = TextListBox?.Selection?.SelectedItem as StringStoreRecord;

@@ -142,12 +142,20 @@ public partial class ToolWindow : Window
 
         if (e.Key is Key.Enter)
         {
-            if(_selectedSearchResult == null || _selectedSearchResult.Feature == null)
+            if(_selectedSearchResult?.Feature == null)
                 return;
             var feature = _selectedSearchResult.Feature;
             var window = (FeatureWindow)Activator.CreateInstance(feature.WindowType)!;
             window.Show();
             Close();
         }
+        if(e.Key is Key.Escape)
+            Close();
+    }
+
+    private void Window_OnKeyDown(object? sender, KeyEventArgs e)
+    {
+        if(e.Key == Key.Escape)
+            Close();
     }
 }

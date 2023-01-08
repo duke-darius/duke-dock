@@ -14,6 +14,7 @@
         Deactivated="WindowBase_OnDeactivated"
         WindowStartupLocation="CenterScreen"
         Activated="WindowBase_OnActivated"
+        KeyDown="Window_OnKeyDown"
          
         x:Class="DukeDock.Windows.ToolWindow"
         Title="DukeDock">

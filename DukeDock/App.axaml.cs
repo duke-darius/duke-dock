@@ -12,6 +12,7 @@ using DukeDock.Lib;
 using DukeDock.Models;
 using DukeDock.Services;
 using DukeDock.Windows;
+using DukeDock.Windows.GuidGeneratorWIndows;
 using DukeDock.Windows.OtpWindows;
 using DynamicData;
 using MonoMac.AppKit;
@@ -60,6 +61,7 @@ public partial class App : Application
         
         Features.Add(new Feature("One time password", typeof(OtpWindow)));
         Features.Add(new Feature("String store", typeof(StringStoreWindow)));
+        Features.Add(new Feature("Guid Generator", typeof(GuidGeneratorWindow)));
         
 
         AvaloniaXamlLoader.Load(this);

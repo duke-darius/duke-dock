@@ -18,7 +18,7 @@ namespace DukeDock.Windows.OtpWindows;
 
 public partial class OtpWindow : FeatureWindow
 {
-    private ObservableCollection<TotpDefinition> Items { get; set; }
+    private ObservableCollection<TotpDefinition> Items { get; set; } = null!;
     private ReactiveCommand<Unit, Unit> ExitCommand { [UsedImplicitly] get; }
     private ReactiveCommand<Unit, Unit> SettingsCommand { [UsedImplicitly] get; }
 
@@ -54,13 +54,6 @@ public partial class OtpWindow : FeatureWindow
         CloseOnDeactivate = true;
         Redraw();
     }
-
-    private void InitializeComponent()
-    {
-        AvaloniaXamlLoader.Load(this);
-        OtpListBox = this.FindControl<ListBox>("OtpListBox");
-    }
-
 
 
     private void OtpListBox_OnKeyDown(object? sender, KeyEventArgs e)

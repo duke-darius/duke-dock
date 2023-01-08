@@ -56,5 +56,16 @@
     <ItemGroup>
       <ProjectReference Include="..\DukeDock.Lib\DukeDock.Lib.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Windows\StringStoreWindows\StringStoreAddRecordWindow.axaml.cs">
+        <DependentUpon>StringStoreAddRecordWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Windows\StringStoreWindows\StringStoreWindow.axaml.cs">
+        <DependentUpon>StringStoreWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
     
 </Project>

@@ -14,18 +14,18 @@ public partial class OtpDisplay : UserControl
     public DispatcherTimer timer { get; set; }
     public bool IsHigh { get; set; } = DateTime.Now.Second >= 30;
     private bool currentIsHigh => DateTime.Now.Second >= 30;
-    [Reactive] private TotpDefinition Def { get; set; }
-    public string Code { get; set; } = "";
+    [Reactive] private TotpDefinition? Def { get; set; }
+    public string? Code { get; set; } = "";
 
     [Reactive] public string Time { get; set; } = "30";
 
 
     public static readonly DirectProperty<OtpDisplay, TotpDefinition> IdProperty =
-        AvaloniaProperty.RegisterDirect<OtpDisplay, TotpDefinition>(nameof(Id), o => o.Id,
+        AvaloniaProperty.RegisterDirect<OtpDisplay, TotpDefinition>(nameof(Id), o => o.Id!,
             (o, v) => o.Id = v);
 
     [Reactive]
-    public TotpDefinition Id
+    public TotpDefinition? Id
     {
         get => _id;
         set
@@ -37,7 +37,7 @@ public partial class OtpDisplay : UserControl
         }
     }
 
-    private TotpDefinition _id;
+    private TotpDefinition? _id;
 
 
 
@@ -72,7 +72,7 @@ public partial class OtpDisplay : UserControl
         });
     }
 
-    public string DefName { get; set; } 
+    public string? DefName { get; set; } 
     private void RefreshCode()
     {
         Dispatcher.UIThread.Post(() =>
