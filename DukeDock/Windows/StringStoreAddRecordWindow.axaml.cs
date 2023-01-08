@@ -1,3 +1,4 @@
+using System;
 using System.Reactive;
 using Avalonia;
 using Avalonia.Controls;
@@ -15,6 +16,7 @@ public partial class StringStoreAddRecordWindow : Window
     
     public StringStoreAddRecordWindow()
     {
+        App.OpenWindows.Add(this);
         DataContext = this;
         CancelCommand = ReactiveCommand.Create(() =>
         {
@@ -48,5 +50,10 @@ public partial class StringStoreAddRecordWindow : Window
             get => _value;
             set => _value = this.RaiseAndSetIfChanged(ref _value, value);
         }
+    }
+
+    private void TopLevel_OnClosed(object? sender, EventArgs e)
+    {
+        App.OpenWindows.Remove(this);
     }
 }

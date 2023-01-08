@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DukeDock", "DukeDock\DukeDock.csproj", "{EBC4EB1F-7405-499A-8D40-0F8927FA9C3B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DukeDock.Lib", "DukeDock.Lib\DukeDock.Lib.csproj", "{7FDC3DDE-0152-4AEA-A9B7-BE6945209E21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{EBC4EB1F-7405-499A-8D40-0F8927FA9C3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBC4EB1F-7405-499A-8D40-0F8927FA9C3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBC4EB1F-7405-499A-8D40-0F8927FA9C3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FDC3DDE-0152-4AEA-A9B7-BE6945209E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FDC3DDE-0152-4AEA-A9B7-BE6945209E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FDC3DDE-0152-4AEA-A9B7-BE6945209E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FDC3DDE-0152-4AEA-A9B7-BE6945209E21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

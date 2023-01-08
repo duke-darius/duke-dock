@@ -52,5 +52,9 @@
       <AvaloniaResource Include="Assets\**">
       </AvaloniaResource>
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DukeDock.Lib\DukeDock.Lib.csproj" />
+    </ItemGroup>
     
 </Project>

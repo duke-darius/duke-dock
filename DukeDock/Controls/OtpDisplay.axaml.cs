@@ -48,7 +48,7 @@ public partial class OtpDisplay : UserControl
         TimeTextBox.DataContext = this;
         RefreshCode();
         timer = new DispatcherTimer();
-        timer.Interval = TimeSpan.FromMilliseconds(500);
+        timer.Interval = TimeSpan.FromMilliseconds(100);
         timer.Tick += Timer_Tick;
         timer.Start();
     }
@@ -67,7 +67,7 @@ public partial class OtpDisplay : UserControl
             if (currentIsHigh)
                 seconds -= 30;
             Remaining.Value = seconds;
-            TimeTextBox.Text = seconds.ToString("00");
+            TimeTextBox.Text = (30 - seconds).ToString("00");
             
         });
     }

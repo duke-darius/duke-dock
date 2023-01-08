@@ -1,14 +1,19 @@
 using System;
+using System.Collections.Generic;
 using System.Reactive;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
+using DukeDock.Lib;
 using DukeDock.Models;
 using DukeDock.Services;
 using DukeDock.Windows;
+using DukeDock.Windows.OtpWindows;
+using DynamicData;
 using MonoMac.AppKit;
 using MonoMac.Foundation;
 using ReactiveUI;
@@ -23,6 +28,8 @@ public partial class App : Application
     public static ToolWindow? CurrentToolWindow;
     private static readonly KeyBindManager KeyBindManager = new();
     public static readonly string BaseDirectory = AppContext.BaseDirectory;
+    public static List<Window> OpenWindows { get; set; } = new();
+    public static List<Feature> Features { get; set; } = new();
 
 
     public override void Initialize()
@@ -34,6 +41,11 @@ public partial class App : Application
             Dispatcher.UIThread.Post(() => {
                 if (CurrentToolWindow == null)
                 {
+                    foreach (var window in OpenWindows.ToArray())
+                    {
+                        window.Close();
+                    }
+
                     CurrentToolWindow = new ToolWindow();
                     CurrentToolWindow.Show();
                 }
@@ -45,6 +57,10 @@ public partial class App : Application
             });
         }));
         Task.Run(KeyBindManager.RunAsync);
+        
+        Features.Add(new Feature("One time password", typeof(OtpWindow)));
+        Features.Add(new Feature("String store", typeof(StringStoreWindow)));
+        
 
         AvaloniaXamlLoader.Load(this);
         DataContext = this;

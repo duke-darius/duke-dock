@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive;
@@ -6,6 +7,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
 using DukeDock.Models;
 using DukeDock.Models.Totp;
+using DynamicData;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using ReactiveUI;
@@ -25,6 +27,7 @@ public partial class OtpSettingsWindow : Window
     private ReactiveCommand<Unit, Unit> CancelCommand { [UsedImplicitly] get; }
     public OtpSettingsWindow()
     {
+        App.OpenWindows.Add(this);
         // Deep copy
         _tempAppState = JsonConvert.DeserializeObject<AppState>(JsonConvert.SerializeObject(App.State));
         Otps = new ObservableCollection<TotpDefinition>(_tempAppState.TotpDefinitions);
@@ -85,5 +88,10 @@ public partial class OtpSettingsWindow : Window
             NameTextBox.Text = SelectedOtp.Name;
             KeyTextBox.Text = SelectedOtp.Key;
         });
+    }
+
+    private void TopLevel_OnClosed(object? sender, EventArgs e)
+    {
+        App.OpenWindows.Remove(this);
     }
 }

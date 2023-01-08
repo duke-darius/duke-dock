@@ -5,25 +5,27 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
+using DukeDock.Lib;
 using DukeDock.Models;
 using JetBrains.Annotations;
 using ReactiveUI;
 
 namespace DukeDock.Windows;
 
-public partial class StringStoreWindow : Window
+public partial class StringStoreWindow : FeatureWindow
 {
     private StringStoreRecord? _selectedRecord = null;
     private ObservableCollection<StringStoreRecord> Records { get; set; } = new(App.State.StringStoreRecords);
-    private bool _closeOnDeactivate = true;
+    
     public StringStoreWindow()
     {
 
+        App.OpenWindows.Add(this);
         AddRecordCommand = ReactiveCommand.CreateFromTask(async () =>
         {
             try
             {
-                _closeOnDeactivate = false;
+                CloseOnDeactivate = false;
                 await Dispatcher.UIThread.InvokeAsync(async () =>
                 {
 
@@ -47,7 +49,7 @@ public partial class StringStoreWindow : Window
                 Console.WriteLine(ex);
             }
 
-            _closeOnDeactivate = true;
+            CloseOnDeactivate = true;
         });
         CopyRecordCommand = ReactiveCommand.Create(() =>
         {
@@ -91,9 +93,8 @@ public partial class StringStoreWindow : Window
         TextListBox.ItemContainerGenerator.ContainerFromIndex(TextListBox.SelectedIndex).Focus();
     }
 
-    private void WindowBase_OnDeactivated(object? sender, EventArgs e)
+    private void TopLevel_OnClosed(object? sender, EventArgs e)
     {
-        if(_closeOnDeactivate)
-            Dispatcher.UIThread.Post(Close);
+        App.OpenWindows.Remove(this);
     }
 }

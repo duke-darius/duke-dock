@@ -13,7 +13,7 @@
         
         <TextBlock x:Name="CodeTextBox" FontSize="56" Text="{Binding Code, Mode=OneWay}" TextAlignment="Center" FontWeight="Bold" FontFamily="Roboto"></TextBlock>
         <ProgressBar x:Name="Remaining" Minimum="0" Maximum="30" ShowProgressText="True" >
-            <ProgressBar.Transitions></ProgressBar.Transitions>
+            
         </ProgressBar>
     </StackPanel>
 </UserControl>

@@ -7,6 +7,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         Width="600"
         Height="600"
+        Closed="TopLevel_OnClosed"
         x:Class="DukeDock.Windows.OtpWindows.OtpSettingsWindow"
         Title="OtpSettingsWindow">
     <Grid ColumnDefinitions="*,*" RowDefinitions="60,*,60">

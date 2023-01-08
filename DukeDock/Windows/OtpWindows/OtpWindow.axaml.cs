@@ -8,25 +8,23 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
-using DukeDock.Controls;
+using DukeDock.Lib;
 using DukeDock.Models.Totp;
+using DynamicData;
 using JetBrains.Annotations;
 using ReactiveUI;
 
 namespace DukeDock.Windows.OtpWindows;
 
-public partial class OtpWindow : Window
+public partial class OtpWindow : FeatureWindow
 {
-    private bool _closeOnDeactivate = true;
-
     private ObservableCollection<TotpDefinition> Items { get; set; }
     private ReactiveCommand<Unit, Unit> ExitCommand { [UsedImplicitly] get; }
     private ReactiveCommand<Unit, Unit> SettingsCommand { [UsedImplicitly] get; }
-    
-    
 
     public OtpWindow()
     {
+        App.OpenWindows.Add(this);
         ExitCommand = ReactiveCommand.Create(Close);
         SettingsCommand = ReactiveCommand.CreateFromTask(ShowSettingsWindow);
         DataContext = this;
@@ -46,14 +44,14 @@ public partial class OtpWindow : Window
 
     private async Task ShowSettingsWindow()
     {
-        _closeOnDeactivate = false;
+        CloseOnDeactivate = false;
         await Dispatcher.UIThread.InvokeAsync(async () =>
         {
             var win = new OtpSettingsWindow();
             await win.ShowDialog(this);
 
         });
-        _closeOnDeactivate = true;
+        CloseOnDeactivate = true;
         Redraw();
     }
 
@@ -63,13 +61,7 @@ public partial class OtpWindow : Window
         OtpListBox = this.FindControl<ListBox>("OtpListBox");
     }
 
-    // ReSharper disable once UnusedParameter.Local
-    // ReSharper disable once UnusedParameter.Local
-    private void WindowBase_OnDeactivated(object? sender, EventArgs e)
-    {
-        if(_closeOnDeactivate)
-            Close();    
-    }
+
 
     private void OtpListBox_OnKeyDown(object? sender, KeyEventArgs e)
     {
@@ -78,9 +70,20 @@ public partial class OtpWindow : Window
         Application.Current?.Clipboard?.SetTextAsync(totp.GetCode());
         Close();
     }
-
+    
     private void WindowBase_OnActivated(object? sender, EventArgs e)
     {
         OtpListBox.Focus();
+    }
+
+    private void TopLevel_OnOpened(object? sender, EventArgs e)
+    {
+        OtpListBox.ItemContainerGenerator.ContainerFromIndex(OtpListBox.SelectedIndex)?.Focus();
+
+    }
+
+    private void TopLevel_OnClosed(object? sender, EventArgs e)
+    {
+        App.OpenWindows.Remove(this);
     }
 }
