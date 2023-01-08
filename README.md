@@ -1,6 +1,8 @@
 # duke-dock
 Cross-Platform, All-in-one dev toolkit
 
+![image](https://user-images.githubusercontent.com/6437746/211209154-f864ccf3-6335-4a10-b516-f8fd89b28d73.png)
+
 ## What is it?
 DukeDock is the culmination of all of those times that I've said to myself, "damnm, I should write a tool to do this for me". 
 I.e. this is a work project with the sole aim of making development smoother/easier by helping you to never take your hand of the keyboard.
